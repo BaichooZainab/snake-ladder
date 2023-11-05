@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake & Ladder Game</title>
+
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js%22%3E"></script>
+
+
+ 
+
+  <style>
+    .box {
+      width: 50px;
+      height: 50px;
+      border: 2px solid black;
+      background-color: rgb(94, 163, 118);
+    }
+
+    .s2 {
+      left: 250px;
+      position: absolute;
+      top: 70px;
+      z-index: 200;
+      height: 170px;
+      transform: rotate(10deg);
+    }
+
+    .s3 {
+      left: 150px;
+      position: absolute;
+      top: 165px;
+      z-index: 200;
+      height: 250px;
+    }
+
+    .s4 {
+      left: 1005px;
+      position: absolute;
+      top: 113px;
+      z-index: 200;
+      height: 250px;
+      transform: rotate(205deg);
+    }
+
+    .s5 {
+      left: 550px;
+      position: absolute;
+      top: 340px;
+      z-index: 200;
+      height: 250px;
+      transform: rotate(90deg);
+      
+    }
+
+    .s6 {
+      left: 860px;
+      position: absolute;
+      top: 250px;
+      z-index: 200;
+      height: 300px;
+      transform: rotate(-5deg);
+    }
+
+    .ladder {
+      left: 530px;
+      position: absolute;
+      top: 130px;
+      z-index: 200;
+      height: 170px;
+    }
+
+    .ladder1 {
+      left: 300px;
+      position: absolute;
+      top: 380px;
+      z-index: 200;
+      height: 150px;
+    }
+
+    .pawn {
+      width: 50px;
+    }
+
+    
+    button {
+        display: inline-block;
+        background-color: #41705e;
+        border-radius: 20px;
+        border: 4px double #84ccaa;
+        color: #080808;
+        text-align: center;
+        font-size: 20px;
+        padding: 5px;
+        width: 150px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 2px;
+      }
+      button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      button:hover {
+        background-color: #a4e9c9;
+      }
+      button:hover span {
+        padding-right: 25px;
+      }
+      button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+
+    /* width */
+::-webkit-scrollbar {
+    width: 10px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black;
+    border-radius: 8px;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #61a08b;
+    border-radius: 10px;
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(60, 148, 126);
+        }
+
+    body{
+    background-image: url("/image/wallpaper.jpg");
+    background-size: cover;
+    }
+
+    img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+    }
+
+  </style>
+  
+</head>
+
+<body id="img-fluid"  class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #41705e;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Snake & Ladder</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/html/About.html">About S & L</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/html/grid.html">PLay S & L</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Registration
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" style="background-color:  #80b8a2;" href="/html/signup.html">Register</a></li>
+              <li><a class="dropdown-item" style="background-color:  #80b8a2;" href="/html/login.html">Login</a></li>
+            </ul>
+          </li>
+
+        </ul>
+
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+
+      </div>
+    </div>
+  </nav>
+ 
+ 
+
+  <div class="container py-1 mt-2 ">
+    <img class="img" src="image/name.png" alt="">
+  </div>
+
+  <div class="container py-3 h-100  m-auto">
+
+    <h5 class="semi-bold text-bg-light bg-opacity-10 p-3"> 
+      
+      <p class="mt-4">How to play: </p>
+      
+      <p > Roll the dice and make your way to the top. Hopefully you don’t land on a snake! </p>
+
+      - Select your color, roll the dice and, move your piece. If you roll a 6, you get another roll for free.
+    <br>
+      - Climb ladders - dodge snakes
+      There are ladders and snakes of varying lengths scattered around the board. Landing on a snake causes you to slide down the board, while you can climb up ladders you land at the foot of the game.
+      
+      <br>
+      <br>
+      <p>
+      Snakes and Ladders is a chance-based board game featuring 100 squares. Players have to get to the top while dealing with the consequences of every dice roll.
+      
+      Historically, the game was used to teach children basic moral values. The ladders were representative of virtues while the snakes of vice. Today, you can see it as a metaphor for life’s journey with all of its ups and downs.
+      </p> 
+      <p class="mt-4">Controls: Mouse </p>
+  
+  </h5>
+  </div>
+
+
+  </body>
+</html>
